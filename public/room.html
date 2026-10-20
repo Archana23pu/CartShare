@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CartShare | Shopping Room</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar app-nav"><div class="container"><a class="navbar-brand fw-bold" href="/">🛒 CartShare</a><div class="d-flex align-items-center gap-2"><span class="online-dot"></span><span id="userBadge" class="small"></span><button id="leaveBtn" class="btn btn-sm btn-outline-secondary">Leave</button></div></div></nav>
+<main class="container py-4">
+<div class="room-header mb-4"><div><div class="eyebrow">Shared shopping room</div><h1>Room <span id="roomCodeDisplay" class="room-code"></span></h1><p class="muted mb-0">Invite your group with the room code.</p></div><button id="copyRoomBtn" class="btn btn-primary">📋 Copy code</button></div>
+<div id="toast" class="custom-toast"></div>
+
+<div class="row g-4">
+<div class="col-xl-8">
+<div class="panel-card">
+<div class="panel-title"><div><h2>Shop Products</h2><p class="muted mb-0">Choose products to add to the shared cart</p></div></div>
+<div class="catalog-tools"><input id="searchProducts" class="form-control" placeholder="🔍 Search products..."><select id="categoryFilter" class="form-select"><option value="All">All categories</option></select></div>
+<div id="productGrid" class="product-grid"></div>
+</div>
+<div class="panel-card mt-4">
+<div class="panel-title"><div><h2>Shared Cart</h2><p id="itemCountText" class="muted mb-0">0 items</p></div><button id="clearCartBtn" class="btn btn-sm btn-outline-danger">Clear cart</button></div>
+<div class="threshold-box"><div class="d-flex justify-content-between mb-2"><strong>Free delivery goal</strong><span id="thresholdText">₹0 / ₹5,000</span></div><div class="progress"><div id="thresholdBar" class="progress-bar"></div></div><small id="thresholdHint" class="muted"></small></div>
+<div id="cartList" class="cart-list"></div><div id="emptyCart" class="empty-state"><div class="empty-icon">🛍️</div><h3>Your shared cart is empty</h3><p class="muted">Add a product above to get started.</p></div>
+</div>
+</div>
+
+<div class="col-xl-4">
+<div class="panel-card mb-4"><div class="panel-title"><div><h2>Room Members</h2><p class="muted mb-0">Shopping together</p></div><span id="memberCount" class="count-badge">0</span></div><div id="memberList"></div></div>
+<div class="panel-card"><div class="panel-title"><div><h2>Activity</h2><p class="muted mb-0">Live room updates</p></div><span class="live-badge">● LIVE</span></div><div id="activityLog" class="activity-log"></div></div>
+</div>
+</div>
+
+<section class="summary-card mt-4"><div><span class="eyebrow">Order summary</span><h2 id="summaryTotal">₹0.00</h2><p id="summaryMeta" class="muted mb-0">0 items • 0 contributors</p></div><button id="receiptBtn" class="btn btn-dark btn-lg">🧾 Generate Receipt</button></section>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="js/room.js"></script>
+</body></html>
